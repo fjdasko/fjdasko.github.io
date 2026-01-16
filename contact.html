@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kontakt - Obľúbené lietadlá</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <h1 class="logo">Obľúbené lietadlá</h1>
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html">Domov</a>
+        <a href="gallery.html">Galéria</a>
+        <a href="ulohy.html">Úlohy</a>
+        <a href="contact.html">Kontakt</a>
+      </nav>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main class="inner">
+    <h2>Kontaktujte ma</h2>
+    <p>Prosím vyplňte formulár. Vaše údaje budú spracované lokálne (CSV) a zobrazia sa na samostatnej stránke.</p>
+
+    <form id="contact-form" action="php/submit.php" method="post" enctype="multipart/form-data" novalidate>
+      <input type="hidden" name="csrf_token" id="csrf_token" value="">
+
+      <label for="full_name">Meno a priezvisko *</label>
+      <input type="text" id="full_name" name="full_name" required maxlength="100">
+
+      <label for="email">E-mail *</label>
+      <input type="email" id="email" name="email" required maxlength="150">
+
+      <label for="phone">Telefón</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9+()\\- ]{7,20}" maxlength="20">
+
+      <label for="subject">Predmet *</label>
+      <input type="text" id="subject" name="subject" required maxlength="120">
+
+      <label for="aircraft_model">Model lietadla *</label>
+      <select id="aircraft_model" name="aircraft_model" required>
+        <option value="A380">Airbus A380</option>
+        <option value="Eurofighter_Typhoon">Eurofighter Typhoon</option>
+        <option value="F15_Eagle">F-15 Eagle</option>
+      </select>
+
+      <label for="visit_date">Dátum návštevy</label>
+      <input type="date" id="visit_date" name="visit_date">
+
+      <label for="message">Správa *</label>
+      <textarea id="message" name="message" required maxlength="5000" rows="6"></textarea>
+
+      <label for="file_upload">Voliteľné: obrazok alebo PDF (max 2 MB)</label>
+      <input type="file" id="file_upload" name="file_upload" accept="image/*,.pdf">
+
+      <label class="checkbox"><input type="checkbox" id="consent_terms" name="consent_terms" required> Súhlasím so spracovaním údajov *</label>
+
+      <div id="form-result" aria-live="polite"></div>
+
+      <button type="submit" class="btn">Odoslať</button>
+    </form>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <p>Autor: Sebastian Štutika | OŠP: Odborný študijný plán | Dátum: 16.01.2026</p>
+      <p>&copy; 2026 - Obľúbené lietadlá</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/validate.js"></script>
+</body>
+</html>
